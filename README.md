@@ -69,6 +69,8 @@ npm install
 
 本人不会Latex，无法提供论文格式上微调的帮助，如果有需要还请各位自行解决。我相信[@xu-cheng](https://github.com/xu-cheng)提供的[华中科技大学毕业论文Latex模板](https://github.com/hust-latex/hustthesis)应该是久经考验的，应该也不用怎么调。
 
+**本项目目前只能生成pdf，至于硕士论文盲审要不要用word的问题，后面我再看看能不能转word。现在至少本科生可以用得上=。=**
+
 # License
 
 [MIT License](https://en.wikipedia.org/wiki/MIT_License)
