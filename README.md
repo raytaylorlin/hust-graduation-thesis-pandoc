@@ -6,7 +6,7 @@
 
 ## 前置安装
 
-1. 安装最新版的[Tex Live](https://www.tug.org/texlive/acquire.html)。 强烈建议下载ISO文件安装，这样只需要半个小时就能完成安装（网络安装可能需要一个多小时）。**最后请确保Tex Live的`bin`文件夹在PATH中。**
+1. 安装最新版的[Tex Live](https://www.tug.org/texlive/acquire.html)。 强烈建议[下载ISO文件](https://www.tug.org/texlive/acquire-iso.html)安装，这样只需要半个小时就能完成安装（网络安装可能需要一个多小时）。**最后请确保Tex Live的`bin`文件夹在PATH中。**
 2. 安装最新版的[Pandoc](http://pandoc.org/installing.html)。
 3. 安装最新版的[Node.js](https://nodejs.org/en/)。
 4. 安装必需的宋体、黑体、仿宋、楷体字体，可以从[这里](https://github.com/mingchen/mac-osx-chinese-fonts/tree/master/Adobe%20Simple%20Chinese%20Fonts)下载。
@@ -63,6 +63,10 @@ npm install
 
 由于环境限制，我没有在Mac或Linux下测过，希望有志同道合的人能帮我测试一下，有问题欢迎给我issue或者pull request，谢谢。
 
-## License
+## 声明
+
+由于之前实验室几乎没有人用Latex写过毕业论文，更没有人用markdown来写过论文，所以本项目目前仍处于试验期，我会在写毕业论文期间不断维护这个项目。但如果最终由于技(zhuang)术(bi)问(shi)题(bai)无法解决，导致不能生成最终可以提交给学校的论文，还请大家见谅。（也就是最终只能将内容一一复制到word中）
+
+# License
 
 [MIT License](https://en.wikipedia.org/wiki/MIT_License)
