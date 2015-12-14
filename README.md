@@ -54,6 +54,8 @@ npm install
 
 **TODO**
 
+* `Error: EBUSY: resource busy or locked, open 'XXX/XXX/dist/thesis.pdf'`：thesis.pdf文件处于打开状态，文件无法写入，请关闭后重新执行`gulp`
+
 ## 测试环境
 
 * Windows 8.1
@@ -70,6 +72,11 @@ npm install
 本人不会Latex，无法提供论文格式上微调的帮助，如果有需要还请各位自行解决。我相信[@xu-cheng](https://github.com/xu-cheng)提供的[华中科技大学毕业论文Latex模板](https://github.com/hust-latex/hustthesis)应该是久经考验的，应该也不用怎么调。
 
 **本项目目前只能生成pdf，至于硕士论文盲审要不要用word的问题，后面我再看看能不能转word。现在至少本科生可以用得上=。=**
+
+# 更新日志
+
+* v0.2.0：将template.tex中基本信息、摘要和致谢部分拆分成独立的文件
+* v0.1.0：发布第一版，可以使用gulp来自动构建论文，生成pdf
 
 # License
 

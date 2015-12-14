@@ -39,6 +39,7 @@ gulp.task('copy-template', function() {
 
 gulp.task('copy-src', function() {
     return gulp.src([
+        'src/*.tex',
         'src/figures/**/*',
         'src/ref.bib'
     ], {base: 'src/'}).pipe(gulp.dest(DIR_TEMP));
