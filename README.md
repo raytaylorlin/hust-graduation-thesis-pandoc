@@ -38,7 +38,7 @@ npm install
 
 ## 原理
 
-本项目旨在让各位毕业生能够脱离用Word编辑论文及其格式的苦海，用优雅的markdown专注于论文的写作。**注意：为了应对论文内容的多样化，本项目使用[Pandoc Markdown](http://pandoc.org/README.html#pandocs-markdown)来写作，这是一种增强版的markdown，具体请参见官方文档。**
+本项目旨在让各位毕业生能够脱离用Word编辑论文及其格式的苦海，用优雅的markdown专注于论文的写作。**注意：为了应对论文内容的多样化，本项目使用[Pandoc Markdown](http://pandoc.org/README.html#pandocs-markdown)来写作，这是一种增强版的markdown，具体请参见官方文档。**然后用Pandoc将`.md`转换成`.tex`，最后用xelatex命令行工具将`.tex`转换为最终的`.pdf`。
 
 本项目使用gulp来自动构建最终的pdf，其流程由多个gulp任务完成。实际所有编译工作均发生在临时目录`temp/`下。流程说明如下：
 
@@ -47,7 +47,7 @@ npm install
 3. `gulp pandoc-thesis`：pandoc将正文`thesis.md`，结合`template/template.tex`和上一步生成的`.tex`，生成`thesis.tex`
 4. `gulp copy-template`：将编译latex所需的`.cls`类文件，华科标题图片等模板文件复制到`temp`下
 5. `gulp copy-src`：将编译latex所需的`.bib`和图片复制到`temp`下
-6. `gulp pdf`：进入到`temp`文件夹，依次调用`xelatex thesis`，`bibtex thesis`，`xelatex thesis`，`xelatex thesis`，生成`thesis.pdf`（至于为什么要反复调用同一个xelatex命令，请参见[这里](http://tex.stackexchange.com/questions/8332/undefined-citation-warnings)
+6. `gulp pdf`：进入到`temp`文件夹，依次调用`xelatex thesis`，`bibtex thesis`，`xelatex thesis`，`xelatex thesis`，生成`thesis.pdf`（至于为什么要反复调用同一个xelatex命令，请参见[这里](http://tex.stackexchange.com/questions/8332/undefined-citation-warnings)）
 7. `gulp copy-pdf`：将编译完的pdf复制到`dist`目录下
 
 ## 报错解决
@@ -66,6 +66,8 @@ npm install
 ## 声明
 
 由于之前实验室几乎没有人用Latex写过毕业论文，更没有人用markdown来写过论文，所以本项目目前仍处于试验期，我会在写毕业论文期间不断维护这个项目。但如果最终由于技(zhuang)术(bi)问(shi)题(bai)无法解决，导致不能生成最终可以提交给学校的论文，还请大家见谅。（也就是最终只能将内容一一复制到word中）
+
+本人不会Latex，无法提供论文格式上微调的帮助，如果有需要还请各位自行解决。我相信[@xu-cheng](https://github.com/xu-cheng)提供的[华中科技大学毕业论文Latex模板](https://github.com/hust-latex/hustthesis)应该是久经考验的，应该也不用怎么调。
 
 # License
 
