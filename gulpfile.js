@@ -2,7 +2,6 @@ var gulp = require('gulp');
 var clean = require('gulp-clean');
 var pandoc = require('gulp-pandoc');
 var gutil = require('gulp-util');
-var rename = require('gulp-rename');
 var runSequence = require('run-sequence');
 
 var childProcess = require('child_process');
