@@ -1,6 +1,6 @@
 {
   "name": "hust-graduation-thesis-pandoc",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "A tool for rendering HUST graduation thesis(including master and bachelor) using pandoc and latex.",
   "author": "Ray Taylor Lin",
   "license": "MIT",
