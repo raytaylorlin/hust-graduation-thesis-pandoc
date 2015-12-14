@@ -22,10 +22,17 @@ npm install
 ## 使用
 
 * 所有要编辑的源文件，均存放在`src/`文件夹下。`thesis.md`为论文正文，`ref.bib`为引用的文献（使用bibtex，谷歌学术可以直接复制出bib格式的引用），`figures`文件夹存放的是引用的图片。
-* 论文类型（草稿/正式版、硕士/学士论文），请修改`template/template.tex`第1行的参数，具体阅读[原Latex模板说明文档](https://raw.githubusercontent.com/hust-latex/hustthesis/master/hustthesis/hustthesis.pdf)
-* 论文标题、姓名、专业、导师等基本信息，请修改`template/template.tex` 11~20行
-* 论文摘要，请修改`template/template.tex` 22~38行
-* 致谢信息，请修改`template/template.tex` 55行
+* 论文类型（草稿/正式版、硕士/学士论文），请修改`template/template.tex`第1行的参数，具体请阅读[原Latex模板说明文档](https://raw.githubusercontent.com/hust-latex/hustthesis/master/hustthesis/hustthesis.pdf)
+    > `format = <draft|final>`：提交草稿选择draft 选项，提交最终版选final选项。其中草稿正文页包括页
+眉（“华中科技大学 xx 学位论文”）、页眉修饰线（双线）、页脚（页码）和页脚
+修饰线（单线）。而最终版正文页不包括页眉、页眉修饰线和页脚修饰线，仅包
+含页脚（页码）。
+
+    > `degree = <none|fyp|bachelor|master|phd>`
+指定论文种类，影响中英文封面处的标题和正文处的页眉（如果format设为draft）。
+* 论文标题、姓名、专业、导师等基本信息，请修改`src/info.tex`
+* 论文摘要，请修改`src/abstract.tex`
+* 致谢信息，请修改`src/thanks.tex`
 * 编辑完之后，执行`gulp`命令即可，生成的pdf存放于`dist`文件夹下。
 
 # 说明
@@ -75,7 +82,7 @@ npm install
 
 # 更新日志
 
-* v0.2.0：将template.tex中基本信息、摘要和致谢部分拆分成独立的文件
+* v0.2.0：将论文模板template.tex中基本信息、摘要和致谢部分拆分成独立的文件
 * v0.1.0：发布第一版，可以使用gulp来自动构建论文，生成pdf
 
 # License
