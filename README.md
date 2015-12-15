@@ -33,7 +33,8 @@ npm install
 * 论文标题、姓名、专业、导师等基本信息，请修改`src/info.tex`
 * 论文摘要，请修改`src/abstract.tex`
 * 致谢信息，请修改`src/thanks.tex`
-* 编辑完之后，执行`gulp`命令即可，生成的pdf存放于`dist`文件夹下。
+* 编辑完之后，**执行`gulp`命令即可构建pdf**，生成的pdf存放于`dist`文件夹下。
+    * 新增用法：`gulp --thesis thesis-elwg-example.md`，`--thesis`参数可指定论文正文md文件，该md文件必须放在`src/`目录下，最终依旧生成`dist/thesis.pdf`
 
 # 说明
 

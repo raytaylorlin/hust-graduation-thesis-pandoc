@@ -7,6 +7,7 @@ var runSequence = require('run-sequence');
 var childProcess = require('child_process');
 var exec = childProcess.exec;
 var execSync = childProcess.execSync;
+var argv = require('yargs').argv;
 
 var DIR_TEMP = 'temp/';
 var DIR_DIST = 'dist/';
@@ -23,7 +24,11 @@ gulp.task('pandoc-parts', function() {
 });
 
 gulp.task('pandoc-thesis', function(cb) {
-    exec('pandoc -s --template=template/template.tex --chapters -o temp/thesis.tex src/thesis.md');
+    var util = require('util');
+    var cmd = 'pandoc -s --template=template/template.tex --chapters -o temp/thesis.tex src/%s';
+    var finalCmd = util.format(cmd, argv.thesis || 'thesis.md');
+    gutil.log('Executing:', gutil.colors.blue(finalCmd));
+    exec(finalCmd);
     // 让gulp知道任务到此已完成
     cb();
 });
@@ -47,13 +52,13 @@ gulp.task('copy-src', function() {
 
 gulp.task('pdf', function(cb) {
     process.chdir(DIR_TEMP);
-    gutil.log('Executing xelatex thesis...');
+    gutil.log('Executing:', gutil.colors.blue('xelatex thesis'));
     execSync('xelatex thesis');
-    gutil.log('Executing bibtex thesis...');
+    gutil.log('Executing:', gutil.colors.blue('bibtex thesis'));
     execSync('bibtex thesis');
-    gutil.log('Executing xelatex thesis...');
+    gutil.log('Executing:', gutil.colors.blue('xelatex thesis'));
     execSync('xelatex thesis');
-    gutil.log('Executing xelatex thesis...');
+    gutil.log('Executing:', gutil.colors.blue('xelatex thesis'));
     execSync('xelatex thesis');
     process.chdir('../');
 
@@ -74,7 +79,7 @@ gulp.task('clean', function() {
 gulp.task('default', function(cb) {
     runSequence(
         // 'clean',
-        'pandoc-parts',
+        // 'pandoc-parts',
         'pandoc-thesis',
         ['copy-template', 'copy-src'],
         'pdf',
