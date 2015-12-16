@@ -13,12 +13,12 @@
 % margins by default, and it is still possible to overwrite the defaults
 % Usage: \includegraphics[width=\maxwidth, height=\maxheight]{my-image.png}
 % Refer to: http://tex.stackexchange.com/questions/159948/pandoc-generated-pdf-contains-large-images-how-can-i-make-them-fit-into-the-pag
-$endif$
 $if(graphics)$
 \makeatletter
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
 \def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
 \makeatother
+$endif$
 
 % 基本信息
 \input{info}
