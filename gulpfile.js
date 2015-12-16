@@ -1,6 +1,8 @@
 var gulp = require('gulp');
 var clean = require('gulp-clean');
 var pandoc = require('gulp-pandoc');
+var replace = require('gulp-replace');
+var rename = require('gulp-rename');
 var gutil = require('gulp-util');
 var runSequence = require('run-sequence');
 
@@ -25,7 +27,7 @@ gulp.task('pandoc-parts', function() {
 
 gulp.task('pandoc-thesis', function(cb) {
     var util = require('util');
-    var cmd = 'pandoc -s --template=template/template.tex --chapters -o temp/thesis.tex src/%s';
+    var cmd = 'pandoc -s --template=template/template.tex --chapters -o temp/thesis_pre.tex src/%s';
     var finalCmd = util.format(cmd, argv.thesis || 'thesis.md');
     gutil.log('Executing:', gutil.colors.blue(finalCmd));
     exec(finalCmd);
@@ -50,16 +52,27 @@ gulp.task('copy-src', function() {
     ], {base: 'src/'}).pipe(gulp.dest(DIR_TEMP));
 });
 
+gulp.task('pre', function() {
+    return gulp.src('temp/thesis_pre.tex')
+        .pipe(replace('\\includegraphics{', '\\includegraphics[width=\\maxwidth]{'))
+        .pipe(rename('thesis.tex'))
+        .pipe(gulp.dest(DIR_TEMP));
+});
+
 gulp.task('pdf', function(cb) {
     process.chdir(DIR_TEMP);
-    gutil.log('Executing:', gutil.colors.blue('xelatex thesis'));
-    execSync('xelatex thesis');
-    gutil.log('Executing:', gutil.colors.blue('bibtex thesis'));
-    execSync('bibtex thesis');
-    gutil.log('Executing:', gutil.colors.blue('xelatex thesis'));
-    execSync('xelatex thesis');
-    gutil.log('Executing:', gutil.colors.blue('xelatex thesis'));
-    execSync('xelatex thesis');
+    try {
+        gutil.log('Executing:', gutil.colors.blue('xelatex thesis'));
+        execSync('xelatex thesis');
+        gutil.log('Executing:', gutil.colors.blue('bibtex thesis'));
+        execSync('bibtex thesis');
+        gutil.log('Executing:', gutil.colors.blue('xelatex thesis'));
+        execSync('xelatex thesis');
+        gutil.log('Executing:', gutil.colors.blue('xelatex thesis'));
+        execSync('xelatex thesis');
+    } catch (e) {
+        console.log(e.stdout.toString());
+    }
     process.chdir('../');
 
     // 让gulp知道任务到此已完成
@@ -82,6 +95,7 @@ gulp.task('default', function(cb) {
         // 'pandoc-parts',
         'pandoc-thesis',
         ['copy-template', 'copy-src'],
+        'pre',
         'pdf',
         'copy-pdf',
         cb
