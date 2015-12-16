@@ -35,6 +35,7 @@ npm install
 * 致谢信息，请修改`src/thanks.tex`
 * 编辑完之后，**执行`gulp`命令即可构建pdf**，生成的pdf存放于`dist`文件夹下。
     * 新增用法：`gulp --thesis thesis-elwg-example.md`，`--thesis`参数可指定论文正文md文件，该md文件必须放在`src/`目录下，最终依旧生成`dist/thesis.pdf`
+    * **注意：如果在系统中无法使用xelatex命令（现发现有同学单独运行xelatex无任何反应），可以尝试使用`gulp --lualatex`来构建pdf（此方案编译会稍慢一些）**
 
 # 说明
 
@@ -88,6 +89,7 @@ npm install
 
 # 更新日志
 
+* v0.4.0：增加``--lualatex`选项，以备在无法使用xelatex编译的情况下用lualatex编译
 * v0.3.1：修复图片比较大时超出页面宽度的问题
 * v0.3.0：新增ELWG专用论文example，gulp脚本新增`--thesis`参数
 * v0.2.0：将论文模板template.tex中基本信息、摘要和致谢部分拆分成独立的文件
