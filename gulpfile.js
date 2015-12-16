@@ -60,15 +60,19 @@ gulp.task('pre', function() {
 });
 
 gulp.task('pdf', function(cb) {
+    // var latexCmd = 'xelatex thesis';
+    var latexCmd = argv.lualatex ? 'lualatex thesis' : 'xelatex thesis';
+    var bibtexCmd = 'bibtex thesis';
+
     process.chdir(DIR_TEMP);
-    gutil.log('Executing:', gutil.colors.blue('xelatex thesis'));
-    execSync('xelatex thesis');
-    gutil.log('Executing:', gutil.colors.blue('bibtex thesis'));
-    execSync('bibtex thesis');
-    gutil.log('Executing:', gutil.colors.blue('xelatex thesis'));
-    execSync('xelatex thesis');
-    gutil.log('Executing:', gutil.colors.blue('xelatex thesis'));
-    execSync('xelatex thesis');
+    gutil.log('Executing:', gutil.colors.blue(latexCmd));
+    execSync(latexCmd);
+    gutil.log('Executing:', gutil.colors.blue(bibtexCmd));
+    execSync(bibtexCmd);
+    gutil.log('Executing:', gutil.colors.blue(latexCmd));
+    execSync(latexCmd);
+    gutil.log('Executing:', gutil.colors.blue(latexCmd));
+    execSync(latexCmd);
     process.chdir('../');
 
     // 让gulp知道任务到此已完成
