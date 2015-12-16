@@ -27,12 +27,21 @@ gulp.task('pandoc-parts', function() {
 
 gulp.task('pandoc-thesis', function(cb) {
     var util = require('util');
+    var fs = require('fs');
     var cmd = 'pandoc -s --template=template/template.tex --chapters -o temp/thesis_pre.tex src/%s';
     var finalCmd = util.format(cmd, argv.thesis || 'thesis.md');
     gutil.log('Executing:', gutil.colors.blue(finalCmd));
-    exec(finalCmd);
-    // 让gulp知道任务到此已完成
-    cb();
+
+    if (!fs.existsSync(DIR_TEMP)) {
+        fs.mkdirSync(DIR_TEMP);
+    }
+    exec(finalCmd, function(err, stdout, stderr) {
+        if (err) {
+            return cb(err);
+        }
+        // 让gulp知道任务到此已完成
+        cb();
+    });
 });
 
 gulp.task('copy-template', function() {
