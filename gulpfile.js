@@ -61,18 +61,14 @@ gulp.task('pre', function() {
 
 gulp.task('pdf', function(cb) {
     process.chdir(DIR_TEMP);
-    try {
-        gutil.log('Executing:', gutil.colors.blue('xelatex thesis'));
-        execSync('xelatex thesis');
-        gutil.log('Executing:', gutil.colors.blue('bibtex thesis'));
-        execSync('bibtex thesis');
-        gutil.log('Executing:', gutil.colors.blue('xelatex thesis'));
-        execSync('xelatex thesis');
-        gutil.log('Executing:', gutil.colors.blue('xelatex thesis'));
-        execSync('xelatex thesis');
-    } catch (e) {
-        console.log(e.stdout.toString());
-    }
+    gutil.log('Executing:', gutil.colors.blue('xelatex thesis'));
+    execSync('xelatex thesis');
+    gutil.log('Executing:', gutil.colors.blue('bibtex thesis'));
+    execSync('bibtex thesis');
+    gutil.log('Executing:', gutil.colors.blue('xelatex thesis'));
+    execSync('xelatex thesis');
+    gutil.log('Executing:', gutil.colors.blue('xelatex thesis'));
+    execSync('xelatex thesis');
     process.chdir('../');
 
     // 让gulp知道任务到此已完成

@@ -14,6 +14,7 @@
     "gulp-pandoc": "^0.2.1",
     "gulp-rename": "^1.2.2",
     "gulp-replace": "^0.5.4",
+    "gulp-util": "^3.0.7",
     "run-sequence": "^1.1.5",
     "yargs": "^3.31.0"
   },
