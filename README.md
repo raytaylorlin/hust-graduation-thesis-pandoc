@@ -90,6 +90,7 @@ npm install
 
 # 更新日志
 
+* v0.4.2：修复最新版的Pandoc v1.15.2，在生成列表时改用了命令\tightlist而产生编译错误的问题
 * v0.4.1：给pandoc-thesis任务添加报错判断信息，并增加对temp文件夹是否存在的判断
 * v0.4.0：增加``--lualatex`选项，以备在无法使用xelatex编译的情况下用lualatex编译
 * v0.3.1：修复图片比较大时超出页面宽度的问题
