@@ -7,6 +7,7 @@
 ## 前置安装
 
 1. 安装最新版的[Tex Live](https://www.tug.org/texlive/acquire.html)。 强烈建议[下载ISO文件](https://www.tug.org/texlive/acquire-iso.html)安装，这样只需要半个小时就能完成安装（网络安装可能需要一个多小时）。**最后请确保Tex Live的`bin`文件夹在PATH中。**
+    * **降级pgf：下载[pgf v2.10](http://sourceforge.net/projects/pgf/files/pgf/version%202.10/pgf_2.10.tds.zip/download)，解压出`tex/generic/pgf/utilities/pgfkeys.code.tex`，替换掉Tex Live安装目录下`<texlive path>/<texlive version>/texmf-dist/tex/generic/pgf/utilities`的文件**，具体原因参照[这里](http://hust-latex.github.io/faqs/)第4个问题
 2. 安装最新版的[Pandoc](http://pandoc.org/installing.html)。
 3. 安装最新版的[Node.js](https://nodejs.org/en/)。
 4. 安装必需的宋体、黑体、仿宋、楷体字体，可以从[这里](https://github.com/mingchen/mac-osx-chinese-fonts/tree/master/Adobe%20Simple%20Chinese%20Fonts)下载。
@@ -89,6 +90,7 @@ npm install
 
 # 更新日志
 
+* v0.4.1：给pandoc-thesis任务添加报错判断信息，并增加对temp文件夹是否存在的判断
 * v0.4.0：增加``--lualatex`选项，以备在无法使用xelatex编译的情况下用lualatex编译
 * v0.3.1：修复图片比较大时超出页面宽度的问题
 * v0.3.0：新增ELWG专用论文example，gulp脚本新增`--thesis`参数
