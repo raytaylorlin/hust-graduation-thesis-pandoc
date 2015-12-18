@@ -20,6 +20,12 @@ $if(graphics)$
 \makeatother
 $endif$
 
+% HACK: 针对最新版的Pandoc v1.15.2，其在生成列表时改用了命令\tightlist而产生编译错误
+% 更新以下命令即可解决
+% Refer to: https://github.com/jgm/pandoc/pull/1571
+\newcommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
 % 基本信息
 \input{info}
 % 摘要

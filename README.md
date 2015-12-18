@@ -70,7 +70,7 @@ npm install
 
 * Windows 8.1
 * Node.js v5.2.0
-* pandoc 1.13.1
+* pandoc 1.15.2
 * XeTeX 3.14159265-2.6-0.99992 / BibTeX 0.99d (TeX Live 2015/W32TeX)
 
 由于环境限制，我没有在Mac或Linux下测过，希望有志同道合的人能帮我测试一下，有问题欢迎给我issue或者pull request，谢谢。
@@ -90,6 +90,7 @@ npm install
 
 # 更新日志
 
+* v0.4.2：修复最新版的Pandoc v1.15.2，在生成列表时改用了命令\tightlist而产生编译错误的问题
 * v0.4.1：给pandoc-thesis任务添加报错判断信息，并增加对temp文件夹是否存在的判断
 * v0.4.0：增加``--lualatex`选项，以备在无法使用xelatex编译的情况下用lualatex编译
 * v0.3.1：修复图片比较大时超出页面宽度的问题
