@@ -6,10 +6,10 @@
 
 ## 前置安装
 
-1. 安装最新版的[Tex Live](https://www.tug.org/texlive/acquire.html)。 强烈建议[下载ISO文件](https://www.tug.org/texlive/acquire-iso.html)安装，这样只需要半个小时就能完成安装（网络安装可能需要一个多小时）。**最后请确保Tex Live的`bin`文件夹在PATH中。**
+1. 安装最新版的[Tex Live](https://www.tug.org/texlive/acquire.html)。 强烈建议[下载ISO文件](https://www.tug.org/texlive/acquire-iso.html)安装，这样只需要半个小时就能完成安装（网络安装可能需要一个多小时）。**最后请确保Tex Live的`bin`文件夹在PATH中。**测试：命令行执行`xelatex -v`或`lualatex -v`可以正常显示版本。
     * **降级pgf：下载[pgf v2.10](http://sourceforge.net/projects/pgf/files/pgf/version%202.10/pgf_2.10.tds.zip/download)，解压出`tex/generic/pgf/utilities/pgfkeys.code.tex`，替换掉Tex Live安装目录下`<texlive path>/<texlive version>/texmf-dist/tex/generic/pgf/utilities`的文件**，具体原因参照[这里](http://hust-latex.github.io/faqs/)第4个问题
-2. 安装最新版的[Pandoc](http://pandoc.org/installing.html)。
-3. 安装最新版的[Node.js](https://nodejs.org/en/)。
+2. 安装最新版的[Pandoc](http://pandoc.org/installing.html)。测试：命令行执行`pandoc -v`可以正常显示版本。
+3. 安装最新版的[Node.js](https://nodejs.org/en/)。测试：命令行执行`node -v`可以正常显示版本。
 4. 安装必需的宋体、黑体、仿宋、楷体字体，可以从[这里](https://github.com/mingchen/mac-osx-chinese-fonts/tree/master/Adobe%20Simple%20Chinese%20Fonts)下载。
 5. 执行以下命令：
 
@@ -22,21 +22,22 @@ npm install
 
 ## 使用
 
-* 所有要编辑的源文件，均存放在`src/`文件夹下。`thesis.md`为论文正文，`ref.bib`为引用的文献（使用bibtex，谷歌学术可以直接复制出bib格式的引用），`figures`文件夹存放的是引用的图片。
+* `src/`文件夹下存放了多个文件夹，每个文件夹代表一个project也就是一篇论文，其中包含了生成一篇论文所需要的各种源文件。例如在`src/thesis-simple/`中，`thesis.md`为论文正文，`ref.bib`为引用的文献（使用bibtex，谷歌学术可以直接复制出bib格式的引用），`figures/`文件夹存放的是引用的图片。
+* 使用时可以从`src/`中任意一个示例项目复制一份出来，并重新命名，如`mythesis`（下面以这个项目名举例）
+* 论文标题、姓名、专业、导师等基本信息，请修改`src/mythesis/info.tex`
+* 论文摘要，请修改`src/mythesis/abstract.tex`
+* 致谢信息，请修改`src/mythesis/thanks.tex`
+* 编辑完之后，**执行`gulp --thesis mythesis`命令即可构建pdf**，生成的pdf存放于`dist`文件夹下。
+    * `--thesis`参数可指定论文所在的项目目录，项目目录必须放在`src/`文件夹下
+    * **注意：如果在系统中无法使用xelatex命令（现发现有同学单独运行xelatex无任何反应），可以尝试加入`--lualatex`参数来构建pdf（此方案编译会稍慢一些）**
 * 论文类型（草稿/正式版、硕士/学士论文），请修改`template/template.tex`第1行的参数，具体请阅读[原Latex模板说明文档](https://raw.githubusercontent.com/hust-latex/hustthesis/master/hustthesis/hustthesis.pdf)
     > `format = <draft|final>`：提交草稿选择draft 选项，提交最终版选final选项。其中草稿正文页包括页
-眉（“华中科技大学 xx 学位论文”）、页眉修饰线（双线）、页脚（页码）和页脚
-修饰线（单线）。而最终版正文页不包括页眉、页眉修饰线和页脚修饰线，仅包
-含页脚（页码）。
+    眉（“华中科技大学 xx 学位论文”）、页眉修饰线（双线）、页脚（页码）和页脚
+    修饰线（单线）。而最终版正文页不包括页眉、页眉修饰线和页脚修饰线，仅包
+    含页脚（页码）。
 
     > `degree = <none|fyp|bachelor|master|phd>`
-指定论文种类，影响中英文封面处的标题和正文处的页眉（如果format设为draft）。
-* 论文标题、姓名、专业、导师等基本信息，请修改`src/info.tex`
-* 论文摘要，请修改`src/abstract.tex`
-* 致谢信息，请修改`src/thanks.tex`
-* 编辑完之后，**执行`gulp`命令即可构建pdf**，生成的pdf存放于`dist`文件夹下。
-    * 新增用法：`gulp --thesis thesis-elwg-example.md`，`--thesis`参数可指定论文正文md文件，该md文件必须放在`src/`目录下，最终依旧生成`dist/thesis.pdf`
-    * **注意：如果在系统中无法使用xelatex命令（现发现有同学单独运行xelatex无任何反应），可以尝试使用`gulp --lualatex`来构建pdf（此方案编译会稍慢一些）**
+    指定论文种类，影响中英文封面处的标题和正文处的页眉（如果format设为draft）。
 
 # 说明
 
@@ -70,7 +71,7 @@ npm install
 
 * Windows 8.1
 * Node.js v5.2.0
-* pandoc 1.13.1
+* pandoc 1.15.2
 * XeTeX 3.14159265-2.6-0.99992 / BibTeX 0.99d (TeX Live 2015/W32TeX)
 
 由于环境限制，我没有在Mac或Linux下测过，希望有志同道合的人能帮我测试一下，有问题欢迎给我issue或者pull request，谢谢。
@@ -90,6 +91,7 @@ npm install
 
 # 更新日志
 
+* v0.5.0: 新增project概念，现在一个文件夹表示一个project，对应一篇论文，可以由`--thesis`参数来指定一个文件夹。（原`--thesis`参数的含义已弃用）
 * v0.4.2：修复最新版的Pandoc v1.15.2，在生成列表时改用了命令\tightlist而产生编译错误的问题
 * v0.4.1：给pandoc-thesis任务添加报错判断信息，并增加对temp文件夹是否存在的判断
 * v0.4.0：增加``--lualatex`选项，以备在无法使用xelatex编译的情况下用lualatex编译

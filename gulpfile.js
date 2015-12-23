@@ -13,6 +13,9 @@ var argv = require('yargs').argv;
 
 var DIR_TEMP = 'temp/';
 var DIR_DIST = 'dist/';
+// 默认项目为thesis-simple
+var BASE_NAME = argv.thesis || 'thesis-simple';
+var DIR_PROJECT = 'src/' + BASE_NAME + '/';
 
 gulp.task('pandoc-parts', function() {
     return gulp.src(['src/*.md', '!src/thesis.md'])
@@ -28,8 +31,8 @@ gulp.task('pandoc-parts', function() {
 gulp.task('pandoc-thesis', function(cb) {
     var util = require('util');
     var fs = require('fs');
-    var cmd = 'pandoc -s --template=template/template.tex --chapters -o temp/thesis_pre.tex src/%s';
-    var finalCmd = util.format(cmd, argv.thesis || 'thesis.md');
+    var cmd = 'pandoc -s --template=template/template.tex --chapters -o temp/thesis_pre.tex %sthesis.md';
+    var finalCmd = util.format(cmd, DIR_PROJECT);
     gutil.log('Executing:', gutil.colors.blue(finalCmd));
 
     if (!fs.existsSync(DIR_TEMP)) {
@@ -55,10 +58,10 @@ gulp.task('copy-template', function() {
 
 gulp.task('copy-src', function() {
     return gulp.src([
-        'src/*.tex',
-        'src/figures/**/*',
-        'src/ref.bib'
-    ], {base: 'src/'}).pipe(gulp.dest(DIR_TEMP));
+        DIR_PROJECT + '*.tex',
+        DIR_PROJECT + 'figures/**/*',
+        DIR_PROJECT + 'ref.bib'
+    ], {base: DIR_PROJECT}).pipe(gulp.dest(DIR_TEMP));
 });
 
 gulp.task('pre', function() {
@@ -90,6 +93,7 @@ gulp.task('pdf', function(cb) {
 
 gulp.task('copy-pdf', function() {
     return gulp.src('temp/thesis.pdf')
+        .pipe(rename(BASE_NAME + '.pdf'))
         .pipe(gulp.dest(DIR_DIST));
 });
 
@@ -99,6 +103,7 @@ gulp.task('clean', function() {
 });
 
 gulp.task('default', function(cb) {
+    gutil.log(gutil.colors.green('Project directory: ' + DIR_PROJECT));
     runSequence(
         // 'clean',
         // 'pandoc-parts',

@@ -44,21 +44,21 @@
 
 ## LAMP架构
 
-LAMP是一种Web网络应用开发环境……
-
-引用\cite{aumann1976agreeing}**【IMPORTANT: 全文必须有至少一处Latex引用命令，否则编译会报错，目前尚无解决方法】**
+LAMP\cite{excoffier2010arlequin, mockus2000case}是一种Web网络应用开发环境……
 
 ### Linux操作系统
 
-Linux是一个开源的基于POSIX和UNIX的多用户、多任务、支持多线程和多CPU的操作系统……
+Linux\cite{excoffier2010arlequin}是一个开源的基于POSIX和UNIX的多用户、多任务、支持多线程和多CPU的操作系统……
+
+【IMPORTANT: 全文必须有至少一处Latex引用命令，否则编译会报错，目前尚无解决方法】**
 
 ### Apache服务器
 
-Apache是Apache软件基金会的一个开源Web服务器……
+Apache\cite{mockus2000case}是Apache软件基金会的一个开源Web服务器……
 
 ### MySQL数据库
 
-MySQL是一个属于Oracle公司的关系型数据库管理系统……
+MySQL\cite{mysql2001mysql}是一个属于Oracle公司的关系型数据库管理系统……
 
 ### PHP语言
 
