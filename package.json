@@ -1,6 +1,6 @@
 {
   "name": "hust-graduation-thesis-pandoc",
-  "version": "0.4.2",
+  "version": "0.5.0",
   "description": "A tool for rendering HUST graduation thesis(including master and bachelor) using pandoc and latex.",
   "repository": {
     "type": "git",
