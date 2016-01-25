@@ -52,7 +52,8 @@ gulp.task('copy-template', function() {
         'template/hustthesis.bst',
         'template/hustthesis.cls',
         'template/hust-title.eps',
-        'template/hust-title.pdf'
+        'template/hust-title.pdf',
+        'template/template_extend.tex'
     ]).pipe(gulp.dest(DIR_TEMP));
 });
 
