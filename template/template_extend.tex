@@ -14,3 +14,42 @@
 % Refer to: https://github.com/jgm/pandoc/pull/1571
 \newcommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+
+%%%%% lstlisting包加入对Javascript语言的解析 %%%%%
+\usepackage{color}
+% 颜色主题来源：Tomorrow theme for Google Code Prettify(http://jmblog.github.io/color-themes-for-google-code-prettify/tomorrow/)
+\definecolor{color_keyword}{HTML}{8959a8}
+\definecolor{color_ndkeyword}{HTML}{4271ae}
+\definecolor{color_identifier}{HTML}{4d4d4c}
+\definecolor{color_comment}{HTML}{8e908c}
+\definecolor{color_string}{HTML}{718c00}
+\lstdefinelanguage{JavaScript}{
+    keywords={break, case, catch, continue, debugger, default, delete, do, else, false, finally, for, function, if, in, instanceof, new, null, return, switch, this, throw, true, try, typeof, var, void, while, with},
+    morecomment=[l]{//},
+    morecomment=[s]{/*}{*/},
+    morestring=[b]',
+    morestring=[b]",
+    ndkeywords={class, export, boolean, throw, implements, import, this},
+    keywordstyle=\color{color_keyword}\bfseries,
+    ndkeywordstyle=\color{color_ndkeyword}\bfseries,
+    identifierstyle=\color{color_identifier},
+    commentstyle=\color{color_comment}\ttfamily,
+    stringstyle=\color{color_string}\ttfamily,
+    sensitive=true
+}
+
+\lstset{
+    language=JavaScript,
+    extendedchars=true,
+    basicstyle=\footnotesize\ttfamily,
+    showstringspaces=false,
+    showspaces=false,
+    numbers=left,
+    numberstyle=\footnotesize,
+    numbersep=9pt,
+    tabsize=2,
+    breaklines=true,
+    showtabs=false,
+    captionpos=b
+}

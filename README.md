@@ -38,6 +38,7 @@ npm install
 
     > `degree = <none|fyp|bachelor|master|phd>`
     指定论文种类，影响中英文封面处的标题和正文处的页眉（如果format设为draft）。
+* 插入一大段代码，**使用`\begin{lstlisting}[language=javascript]`和`\end{lstlisting}`将你的代码段包围起来，请不要使用md的三引号语法**。详情参见example中代码段的写法。
 
 # 说明
 
@@ -86,11 +87,14 @@ npm install
 
 # TODO
 
+- [ ] 制作论文通用工具：拍平markdown文件以得到纯文本，便于查重
+- [ ] 制作论文通用工具：按论文引用的顺序排序bibtex
 - [x] 目前图片宽度一旦超过500px就会超出页面范围，应让图片宽度自适应
 - [ ] 构建报错时可以显示更加具体的错误信息
 
 # 更新日志
 
+* v0.6.0: 新增对Javascript代码的高亮显示支持
 * v0.5.0: 新增project概念，现在一个文件夹表示一个project，对应一篇论文，可以由`--thesis`参数来指定一个文件夹。（原`--thesis`参数的含义已弃用）
 * v0.4.2：修复最新版的Pandoc v1.15.2，在生成列表时改用了命令\tightlist而产生编译错误的问题
 * v0.4.1：给pandoc-thesis任务添加报错判断信息，并增加对temp文件夹是否存在的判断
