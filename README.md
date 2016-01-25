@@ -38,7 +38,7 @@ npm install
 
     > `degree = <none|fyp|bachelor|master|phd>`
     指定论文种类，影响中英文封面处的标题和正文处的页眉（如果format设为draft）。
-* 插入一大段代码，**使用`\begin{lstlisting}[language=javascript]`和`\end{lstlisting}`将你的代码段包围起来，请不要使用md的三引号语法**。详情参见example中代码段的写法。
+* 插入一大段代码，**使用`\begin{lstlisting}[language=javascript]`和`\end{lstlisting}`将你的代码段包围起来，请不要使用md的三引号语法**。详情参见`src/thesis-simple/thesis.md`中代码段的写法。
 
 # 说明
 
