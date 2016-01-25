@@ -1,0 +1,55 @@
+%%%%% HACK: 定义两个调整\includegraphics图片尺寸以适应页面宽度的命令 %%%%%
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% Usage: \includegraphics[width=\maxwidth, height=\maxheight]{my-image.png}
+% Refer to: http://tex.stackexchange.com/questions/159948/pandoc-generated-pdf-contains-large-images-how-can-i-make-them-fit-into-the-pag
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+
+
+%%%%% HACK: 针对最新版的Pandoc v1.15.2，其在生成列表时改用了命令\tightlist而产生编译错误 %%%%%
+% 更新以下命令即可解决
+% Refer to: https://github.com/jgm/pandoc/pull/1571
+\newcommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+
+%%%%% lstlisting包加入对Javascript语言的解析 %%%%%
+\usepackage{color}
+% 颜色主题来源：Tomorrow theme for Google Code Prettify(http://jmblog.github.io/color-themes-for-google-code-prettify/tomorrow/)
+\definecolor{color_keyword}{HTML}{8959a8}
+\definecolor{color_ndkeyword}{HTML}{4271ae}
+\definecolor{color_identifier}{HTML}{4d4d4c}
+\definecolor{color_comment}{HTML}{8e908c}
+\definecolor{color_string}{HTML}{718c00}
+\lstdefinelanguage{JavaScript}{
+    keywords={break, case, catch, continue, debugger, default, delete, do, else, false, finally, for, function, if, in, instanceof, new, null, return, switch, this, throw, true, try, typeof, var, void, while, with},
+    morecomment=[l]{//},
+    morecomment=[s]{/*}{*/},
+    morestring=[b]',
+    morestring=[b]",
+    ndkeywords={class, export, boolean, throw, implements, import, this},
+    keywordstyle=\color{color_keyword}\bfseries,
+    ndkeywordstyle=\color{color_ndkeyword}\bfseries,
+    identifierstyle=\color{color_identifier},
+    commentstyle=\color{color_comment}\ttfamily,
+    stringstyle=\color{color_string}\ttfamily,
+    sensitive=true
+}
+
+\lstset{
+    language=JavaScript,
+    extendedchars=true,
+    basicstyle=\footnotesize\ttfamily,
+    showstringspaces=false,
+    showspaces=false,
+    numbers=left,
+    numberstyle=\footnotesize,
+    numbersep=9pt,
+    tabsize=2,
+    breaklines=true,
+    showtabs=false,
+    captionpos=b
+}

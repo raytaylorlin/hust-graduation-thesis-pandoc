@@ -35,11 +35,24 @@
 
 ### 代码片段
 
-```
+\begin{lstlisting}[language=javascript]
+var fruits = ["Banana", "Orange", "Apple", "Mango"];
+document.getElementById("demo").innerHTML = fruits.join(" * ");
+function myFunction(name,job) {
+    for (var i = 0; i < 5; i++) {
+        if (true) {
+            document.getElementById("demo").innerHTML =
+            "Welcome " + name + ", the " + job + ".";
+        }
+    }
+}
+\end{lstlisting}
+
+\begin{lstlisting}[language=python]
 qsort []     = []
 qsort (x:xs) = qsort (filter (< x) xs) ++ [x] ++
                qsort (filter (>= x) xs)
-```
+\end{lstlisting}
 
 ## 表格
 
